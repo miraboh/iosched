@@ -30,16 +30,13 @@ class ArActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val pinnedSessionsJson =
-            intent?.extras?.getString(ArConstants.PINNED_SESSIONS_JSON_KEY, "") ?: ""
-        val canSignedInUserDemoAr =
-            intent?.extras?.getBoolean(ArConstants.CAN_SIGNED_IN_USER_DEMO_AR, false) ?: false
+        val pinnedSessionsJson = intent?.extras?.getString(ArConstants.PINNED_SESSIONS_JSON_KEY, "") ?: ""
+        val canSignedInUserDemoAr = intent?.extras?.getBoolean(ArConstants.CAN_SIGNED_IN_USER_DEMO_AR, false) ?: false
 
         arWebView = WebView(this)
         setContentView(arWebView)
         arWebView.apply {
-            webViewClient =
-                ArWebViewClient(pinnedSessionsJson, canSignedInUserDemoAr)
+            webViewClient = ArWebViewClient(pinnedSessionsJson, canSignedInUserDemoAr)
             settings.apply {
                 mediaPlaybackRequiresUserGesture = false
                 domStorageEnabled = true
